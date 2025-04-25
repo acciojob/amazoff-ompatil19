@@ -9,23 +9,19 @@ public class Order {
 
         // The deliveryTime has to converted from string to int and then stored in the attribute
         //deliveryTime  = HH*60 + MM
-        this.id = id;
-        this.deliveryTime = convertTimeToMinutes(deliveryTime);
+        this.id=id;
+        this.deliveryTime=convertTimeToMinutes(deliveryTime);
     }
-
-    private int convertTimeToMinutes(String deliveryTime) {
-        String[] parts = deliveryTime.split(":");
-        return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);
+    int convertTimeToMinutes(String time) {
+        String[] parts = time.split(":"); // Splitti
+        // ng HH:MM
+        int hours = Integer.parseInt(parts[0]); // Extract HH
+        int minutes = Integer.parseInt(parts[1]); // Extract MM
+        return hours * 60 + minutes; // Convert to total minutes
     }
-
     public String getId() {
         return id;
     }
 
-    public String getDeliveryTime() {
-        return String.valueOf(deliveryTime);}
-
-    public String getOrderID() {
-        return id;
-    }
+    public int getDeliveryTime() {return deliveryTime;}
 }
